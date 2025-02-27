@@ -9,21 +9,18 @@ const PORT = 4000;
 
 connectDB();
 
-app.use(cors());
-app.use(express.json({ limit: "10mb" }))
+app.use(cors({
+  origin: "*",
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept", "Authorization"],
+}));
+
+app.options("*", cors()); // Handle preflight requests
+
+app.use(express.json({ limit: "10mb" }));
 app.use(bodyParser.json({ limit: "100mb" }));
 app.use(bodyParser.urlencoded({ extended: true, parameterLimit: 100000, limit: "100mb" }));
-
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Credentials", "true");
-  res.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "Access-Control-Allow-Origin,Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Content-Length, Access-Control-Request-Method, Access-Control-Request-Headers,Authorization"
-  );
-  next();
-});
 
 const router = express.Router();
 app.use("/api", router);
