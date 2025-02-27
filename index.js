@@ -18,8 +18,8 @@ app.use((req, res, next) => {
 
 // CORS Setup
 app.use(cors({
-  origin: "https://binnysjewelleryfe.netlify.app/", 
-  credentials: true, 
+  origin: ["https://binnysjewelleryfe.netlify.app", "http://localhost:3000"], // Allow frontend domains
+  credentials: true, // Allow cookies/auth headers
 }));
 
 // Handle Preflight Requests
