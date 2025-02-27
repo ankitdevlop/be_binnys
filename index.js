@@ -10,7 +10,7 @@ const PORT = 3000;
 connectDB();
 
 app.use(cors({
-  origin: "https://binnysjewelleryfe.netlify.app/",
+  origin: "*",
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept", "Authorization"],
