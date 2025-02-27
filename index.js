@@ -5,7 +5,7 @@ const connectDB = require("./utils/database");
 const routes = require("./routes");
 
 const app = express();
-const PORT = 4000;
+const PORT = 3000;
 
 connectDB();
 
